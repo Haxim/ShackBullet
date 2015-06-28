@@ -28,6 +28,6 @@ while True:
     r = requests.post("http://notifications.winchatty.com/v2/notifications/waitForNotification", data=payload)
     data = json.loads(r.text)
     #got one, now setup the payload for pushbullet
-    bulletpayload = { 'type' : 'link', 'title' : data['messages'][0]['subject'] + ': ' + data['messages'][0]['body'], 'body' : data['messages'][0]['body'], 'url' : 'http://www.shacknews.com/chatty?id=' + str(data['messages'][0]['postId']) + '#item_' + str(data['messages'][0]['postId']) }
+    bulletpayload = { 'type' : 'link', 'title' : data['messages'][0]['subject'] + ': ' + data['messages'][0]['body'], 'body' : data['messages'][0]['body'], 'url' : 'LatestChatty://www.shacknews.com/chatty?id=' + str(data['messages'][0]['postId']) + '#item_' + str(data['messages'][0]['postId']) }
     #send the notification to pushbullet
     r = requests.post("https://api.pushbullet.com/v2/pushes", headers=bulletheaders, data=bulletpayload)
