@@ -2,6 +2,7 @@
 import requests
 import json
 import uuid
+import time
 
 #Edit these to your shacknews login credentials
 shackname = 'Username'
@@ -32,3 +33,5 @@ while True:
         bulletpayload = { 'type' : 'link', 'title' : messages['subject'] + ': ' + messages['body'], 'body' : messages['body'], 'url' : 'LatestChatty://www.shacknews.com/chatty?id=' + str(messages['postId']) + '#item_' + str(messages['postId']) }
         #send the notification to pushbullet
         r = requests.post("https://api.pushbullet.com/v2/pushes", headers=bulletheaders, data=bulletpayload)
+    #sleep for a few seconds
+    time.sleep(3)
