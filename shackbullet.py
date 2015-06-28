@@ -8,7 +8,7 @@ shackname = 'Username'
 shackpass = 'ShackPassword'
 pushbulletkey = 'access token from https://www.pushbullet.com/account'
 
-#Fun Bbegins
+#Fun Begins
 
 #generate uuid from namespace
 uuid = uuid.uuid5(uuid.NAMESPACE_DNS, 'winchatty.com')
@@ -26,6 +26,7 @@ bulletheaders = { 'Authorization' : 'Bearer ' + pushbulletkey }
 while True:
     #wait for notifications
     r = requests.post("http://notifications.winchatty.com/v2/notifications/waitForNotification", data=payload)
+    data = json.loads(r.text)
     #got one, now setup the payload for pushbullet
     bulletpayload = { 'type' : 'link', 'title' : data['messages'][0]['subject'] + ': ' + data['messages'][0]['body'], 'body' : data['messages'][0]['body'], 'url' : 'http://www.shacknews.com/chatty?id=' + str(data['messages'][0]['postId']) + '#item_' + str(data['messages'][0]['postId']) }
     #send the notification to pushbullet
