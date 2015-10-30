@@ -1,2 +1,2 @@
 # ShackBullet
-Simple Python Script for Sending Winchatty Notifications to Pushbullet
+Python app for sending Winchatty notifications to Pushbullet
